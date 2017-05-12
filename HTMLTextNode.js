@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Text } from 'react-native';
 import shallowCompare from 'react-addons-shallow-compare';
 import { AllHtmlEntities } from 'html-entities';
@@ -10,7 +11,7 @@ export default class HTMLTextNode extends React.Component {
   /* ****************************************************************************/
 
     static propTypes = {
-        children: React.PropTypes.string.isRequired
+        children: PropTypes.string.isRequired
     }
 
   /**

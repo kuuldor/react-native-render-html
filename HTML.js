@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { View } from 'react-native';
 import shallowCompare from 'react-addons-shallow-compare';
 import htmlparser2 from 'htmlparser2';
@@ -14,12 +15,12 @@ export default class HTML extends React.Component {
   /* ****************************************************************************/
 
     static propTypes = {
-        html: React.PropTypes.string.isRequired,
-        htmlStyles: React.PropTypes.object,
+        html: PropTypes.string.isRequired,
+        htmlStyles: PropTypes.object,
         containerStyle: View.propTypes.style,
-        onLinkPress: React.PropTypes.func,
-        imagesMaxWidth: React.PropTypes.number,
-        renderers: React.PropTypes.object.isRequired
+        onLinkPress: PropTypes.func,
+        imagesMaxWidth: PropTypes.number,
+        renderers: PropTypes.object.isRequired
     }
 
     static defaultProps = {
@@ -131,6 +132,7 @@ export default class HTML extends React.Component {
         return htmlElements.map((node, index, list) => {
             if (node.type === 'text') {
                 const str = HTMLTextNode.removeWhitespaceListHTML(node.data, index, parentTagName);
+                console.log(`Rendering text: ${str}`)
                 if (str.length) {
                     return (<HTMLTextNode key={index}>{str}</HTMLTextNode>);
                 } else {
